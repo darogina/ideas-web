@@ -6,13 +6,14 @@ import com.github.darogina.ideas.controller.api.v1.BooksAPIv1Controller;
 import com.github.darogina.ideas.entity.BookEntity;
 import com.github.darogina.ideas.model.api.v1.Book;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
-@Named("bookResourceAssembler")
+@Component("bookResourceAssembler")
 public class BookResourceAssembler extends GenericResourceAssemler<BooksAPIv1Controller, BookEntity, Book> {
 
     private ModelMapper modelMapper;

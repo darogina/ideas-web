@@ -1,12 +1,15 @@
 package com.github.darogina.ideas.config;
 
+import com.github.darogina.ideas.initializer.Initializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.hateoas.ResourceAssembler;
 
 @Configuration
-@ComponentScan({"com.github.darogina.ideas.assembler"})
-@ImportResource({"classpath:/spring/services-context.xml"})
+@ComponentScan(basePackageClasses = {Initializer.class})
+@Import({ServiceConfig.class})
 public class ApplicationConfig {
 
 }

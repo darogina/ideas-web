@@ -16,10 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Controller
+@RestController
 @ExposesResourceFor(Author.class)
 @RequestMapping(value = "/api/v1/authors")
-@ControllerAdvice
 public class AuthorsAPIv1Controller extends ServiceBasedRestController<Author, Long, AuthorService, AuthorResourceAssembler> {
 
     @Inject @Named("bookResourceAssembler")

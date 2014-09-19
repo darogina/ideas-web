@@ -1,5 +1,6 @@
 package com.github.darogina.ideas.controller;
 
+import com.github.darogina.ideas.config.TestConfig;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
@@ -8,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:test-applicationContext.xml")
+@ContextConfiguration(classes = {TestConfig.class})
 public abstract class AbstractWebTests {
 
     public static final String APPLICATION_JSON_UTF_8 = "application/json;charset=UTF-8";

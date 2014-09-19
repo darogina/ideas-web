@@ -4,16 +4,13 @@ import com.github.darogina.ideas.config.ApplicationConfig;
 import com.github.darogina.ideas.config.JpaConfig;
 import com.github.darogina.ideas.config.ServletConfig;
 import org.h2.server.web.WebServlet;
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.ContextLoaderListener;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.context.support.XmlWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.filter.DelegatingFilterProxy;
-import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import javax.servlet.*;
+import javax.servlet.Filter;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
 
 //web.xml
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {

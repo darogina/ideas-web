@@ -1,5 +1,7 @@
 package com.github.darogina.ideas.config;
 
+import com.github.darogina.ideas.assembler.api.ResourceAssembler;
+import com.github.darogina.ideas.controller.Controller;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.hateoas.config.EnableEntityLinks;
@@ -16,7 +18,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.github.darogina.ideas.controller"})
+@ComponentScan(basePackageClasses = {Controller.class, ResourceAssembler.class})
 @EnableEntityLinks
 public class ServletConfig extends WebMvcConfigurerAdapter {
 

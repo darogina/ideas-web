@@ -1,5 +1,6 @@
 package com.github.darogina.ideas.config;
 
+import com.github.darogina.ideas.repository.Repository;
 import com.jolbox.bonecp.BoneCPConfig;
 import com.jolbox.bonecp.BoneCPDataSource;
 import org.hibernate.jpa.HibernatePersistenceProvider;
@@ -31,7 +32,7 @@ import static org.hibernate.jpa.AvailableSettings.NAMING_STRATEGY;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories("com.github.darogina.ideas.repository")
+@EnableJpaRepositories(basePackageClasses = {Repository.class})
 @PropertySource("classpath:persistence.properties")
 public class JpaConfig implements TransactionManagementConfigurer {
     private static final String PROPERTY_NAME_DATABASE_DRIVER   = "db.driver";
