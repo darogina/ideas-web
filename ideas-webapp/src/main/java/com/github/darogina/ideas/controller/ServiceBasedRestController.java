@@ -4,6 +4,7 @@ import com.github.darogina.ideas.assembler.api.ResourceAssembler;
 import com.github.darogina.ideas.entity.BaseEntity;
 import com.github.darogina.ideas.exception.NotFoundException;
 import com.github.darogina.ideas.service.CrudService;
+import com.wordnik.swagger.annotations.ApiOperation;
 import org.jodah.typetools.TypeResolver;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -11,11 +12,14 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.PostConstruct;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public abstract class ServiceBasedRestController<T, ID extends Serializable, S extends CrudService, R extends ResourceAssembler> implements

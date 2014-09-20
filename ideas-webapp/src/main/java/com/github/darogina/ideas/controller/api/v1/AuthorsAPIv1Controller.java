@@ -9,16 +9,19 @@ import com.github.darogina.ideas.exception.NotFoundException;
 import com.github.darogina.ideas.model.api.v1.Author;
 import com.github.darogina.ideas.model.api.v1.Book;
 import com.github.darogina.ideas.service.AuthorService;
+import com.wordnik.swagger.annotations.Api;
 import org.springframework.hateoas.ExposesResourceFor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import static com.github.darogina.ideas.controller.RestController.API_REQUEST_MAPPING;
+
 @RestController
+@Api(value = "Author")
 @ExposesResourceFor(Author.class)
-@RequestMapping(value = "/api/v1/authors")
+@RequestMapping(API_REQUEST_MAPPING + "/v1/authors")
 public class AuthorsAPIv1Controller extends ServiceBasedRestController<Author, Long, AuthorService, AuthorResourceAssembler> {
 
     @Inject @Named("bookResourceAssembler")
@@ -58,5 +61,4 @@ public class AuthorsAPIv1Controller extends ServiceBasedRestController<Author, L
 
         return bookResourceAssembler.toResources(author.getBooks());
     }
-
 }

@@ -1,6 +1,7 @@
 package com.github.darogina.ideas;
 
 import com.github.darogina.ideas.config.ApplicationConfig;
+import com.github.darogina.ideas.config.DocumentationConfig;
 import com.github.darogina.ideas.config.JpaConfig;
 import com.github.darogina.ideas.config.ServletConfig;
 import org.h2.server.web.WebServlet;
@@ -28,7 +29,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[] {ServletConfig.class};
+        return new Class<?>[] {ServletConfig.class, DocumentationConfig.class};
     }
 
     @Override

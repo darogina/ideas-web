@@ -2,16 +2,15 @@ package com.github.darogina.ideas.config;
 
 import com.github.darogina.ideas.assembler.api.ResourceAssembler;
 import com.github.darogina.ideas.controller.Controller;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.hateoas.config.EnableEntityLinks;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +22,12 @@ import java.util.List;
 public class ServletConfig extends WebMvcConfigurerAdapter {
 
     private List<HttpMessageConverter<?>> messageConverters; // Cached: this is not a bean.
+    private static final String[] RESOURCE_PATTERNS = {"css/", "images/", "lib/", "swagger-ui.js"};
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("index");
+    }
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
@@ -39,6 +44,14 @@ public class ServletConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/").addResourceLocations("/resources/**");
+    }
+
+    @Bean
+    public InternalResourceViewResolver getInternalResourceViewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/views/");
+        resolver.setSuffix(".jsp");
+        return resolver;
     }
 
     /**

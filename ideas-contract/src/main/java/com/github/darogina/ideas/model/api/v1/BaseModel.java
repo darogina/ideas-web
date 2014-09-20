@@ -1,6 +1,7 @@
 package com.github.darogina.ideas.model.api.v1;
 
 import com.github.darogina.ideas.model.api.ApiModel;
+import com.wordnik.swagger.annotations.ApiModelProperty;
 import org.springframework.hateoas.ResourceSupport;
 
 public abstract class BaseModel extends ResourceSupport implements ApiModel {

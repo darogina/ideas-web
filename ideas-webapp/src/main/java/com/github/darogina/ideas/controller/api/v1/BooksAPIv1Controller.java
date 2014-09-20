@@ -6,16 +6,20 @@ import com.github.darogina.ideas.entity.BaseEntity;
 import com.github.darogina.ideas.entity.BookEntity;
 import com.github.darogina.ideas.model.api.v1.Book;
 import com.github.darogina.ideas.service.BookService;
+import com.wordnik.swagger.annotations.Api;
 import org.springframework.hateoas.ExposesResourceFor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Controller
+import static com.github.darogina.ideas.controller.RestController.API_REQUEST_MAPPING;
+
+@RestController
+@Api(value = "Book", basePath = API_REQUEST_MAPPING)
 @ExposesResourceFor(Book.class)
-@RequestMapping(value = "/api/v1/books")
+@RequestMapping(value = API_REQUEST_MAPPING + "/v1/books")
 public class BooksAPIv1Controller extends ServiceBasedRestController<Book, Long, BookService, BookResourceAssembler> {
 
     @Override @Inject @Named("bookService")

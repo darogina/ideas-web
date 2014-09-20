@@ -1,10 +1,13 @@
 package com.github.darogina.ideas.controller;
 
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 /**
  * REST controller interface
@@ -13,6 +16,8 @@ import java.io.Serializable;
  * @param <ID> Primary resource identifier at webservice level, usually Long or String
  */
 public interface RestController<T, ID extends Serializable> {
+
+    public static final String API_REQUEST_MAPPING = "/api";
 
     /**
      * Create a new resource<br />
