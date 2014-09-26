@@ -104,8 +104,8 @@ public abstract class AbstractCrudService<T extends BaseEntity, ID extends Seria
      * {@inheritDoc}
      */
     @Override
-    public List<T> findAll() {
-        return (List<T>) repository.findAll();
+    public Iterable<T> findAll() {
+        return repository.findAll();
     }
 
     /**
