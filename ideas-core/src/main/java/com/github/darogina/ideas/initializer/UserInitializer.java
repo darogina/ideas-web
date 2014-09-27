@@ -1,6 +1,7 @@
 package com.github.darogina.ideas.initializer;
 
 import com.github.darogina.ideas.entity.RoleEntity;
+import com.github.darogina.ideas.entity.UserConnectionEntity;
 import com.github.darogina.ideas.entity.UserEntity;
 import com.github.darogina.ideas.enums.UserRole;
 import com.github.darogina.ideas.service.RoleService;
@@ -11,6 +12,7 @@ import org.springframework.util.Assert;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.Date;
 
 @Named("userInitializer")
 public class UserInitializer {
@@ -35,7 +37,12 @@ public class UserInitializer {
         Assert.notNull(roleEntity);
         Assert.notNull(roleEntity.getId());
 
+
         UserEntity userEntity = new UserEntity(USER_USERNAME, USER_PASSWORD, Sets.newHashSet(roleEntity));
+        UserConnectionEntity userConnectionEntity = new UserConnectionEntity(userEntity, "google", "googleUserId",
+                1, "User Display", "profile url", "image url", "access token", "secret", "refresh", new Date().getTime() + 10000);
+        userEntity.getUserConnections().add(userConnectionEntity);
+
         userEntity = userService.create(userEntity);
         Assert.notNull(userEntity);
         Assert.notNull(userEntity.getId());

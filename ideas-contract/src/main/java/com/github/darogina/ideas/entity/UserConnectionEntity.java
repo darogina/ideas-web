@@ -1,9 +1,12 @@
 package com.github.darogina.ideas.entity;
 
+import org.hibernate.envers.Audited;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Audited
 @Table(name = "UserConnection",
         indexes = {
                 @Index(name = "I_USER_CONNECTION_RANK",
@@ -201,12 +204,14 @@ public class UserConnectionEntity implements Serializable {
         return true;
     }
 
-    class UserConnectionEntityId implements Serializable {
+    protected static class UserConnectionEntityId implements Serializable {
         @Transient
         private static final long serialVersionUID = -7657908440068594673L;
 
         String providerUserId;
         String providerId;
+
+        protected UserConnectionEntityId() { }
     }
 
 }
