@@ -11,9 +11,11 @@
 
     <properties>
         <!--Dependency Version Properties-->
-        <spring.version>4.1.0.RELEASE</spring.version>
+        <spring.version>4.1.1.RELEASE</spring.version>
         <spring.security.version>3.2.5.RELEASE</spring.security.version>
-        <spring.data.releasetrain.version>Dijkstra-SR4</spring.data.releasetrain.version>
+        <spring.security.oauth.version>2.0.3.RELEASE</spring.security.oauth.version>
+        <spring.data.releasetrain.version>Evans-RELEASE</spring.data.releasetrain.version>
+        <spring.integration.version>4.0.4.RELEASE</spring.integration.version>
         <spring.hateoas.version>0.16.0.RELEASE</spring.hateoas.version>
         <spring.plugin.version>1.1.0.RELEASE</spring.plugin.version>
         <spring.social.google.version>1.0.0.RELEASE</spring.social.google.version>
@@ -35,7 +37,7 @@
         <jadira.usertype.version>3.2.0.GA</jadira.usertype.version>
         <jodah.typetools.version>0.3.0</jodah.typetools.version>
         <javax.inject.version>1</javax.inject.version>
-        <javax.validation.version>1.1.0.Final</javax.validation.version>
+        <hibernate.validator.version>5.1.2.Final</hibernate.validator.version>
         <guava.version>17.0</guava.version>
         <httpclient.version>4.3.5</httpclient.version>
         <modelmapper.version>0.7.2</modelmapper.version>
@@ -70,6 +72,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-releasetrain</artifactId>
@@ -78,7 +81,27 @@
                 <scope>import</scope>
             </dependency>
 
-            <!--Spring Social-->
+            <dependency>
+                <groupId>org.springframework.integration</groupId>
+                <artifactId>spring-integration-bom</artifactId>
+                <version>${spring.integration.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--Security-->
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>${spring.security.oauth.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-taglibs</artifactId>
+                <version>${spring.security.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.social</groupId>
                 <artifactId>spring-social-google</artifactId>
@@ -223,7 +246,7 @@
                 <version>${javax.inject.version}</version>
             </dependency>
 
-            <!--Servlet-->
+            <!--Web-->
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
@@ -265,10 +288,11 @@
 
             <!--Validation-->
             <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
-                <version>${javax.validation.version}</version>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate.validator.version}</version>
             </dependency>
+
             <!--Documentation-->
             <dependency>
                 <groupId>com.mangofactory</groupId>

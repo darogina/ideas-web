@@ -2,6 +2,9 @@ package com.github.darogina.ideas.config;
 
 import com.github.darogina.ideas.assembler.api.ResourceAssembler;
 import com.github.darogina.ideas.controller.Controller;
+import com.github.darogina.ideas.controller.security.AccessConfirmationController;
+import com.github.darogina.ideas.controller.security.AdminController;
+import com.github.darogina.ideas.security.UserApprovalHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +12,10 @@ import org.springframework.hateoas.config.EnableEntityLinks;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.security.oauth2.provider.ClientDetailsService;
+import org.springframework.security.oauth2.provider.approval.ApprovalStore;
+import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 

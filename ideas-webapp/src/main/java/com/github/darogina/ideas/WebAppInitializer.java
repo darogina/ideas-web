@@ -6,6 +6,7 @@ import com.github.darogina.ideas.config.JpaConfig;
 import com.github.darogina.ideas.config.ServletConfig;
 import org.h2.server.web.WebServlet;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
@@ -51,15 +52,11 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
-//        registerListener(servletContext);
-//        registerDispatcherServlet(servletContext);
-//
-//        FilterRegistration charEncodingfilterReg = servletContext.addFilter("CharacterEncodingFilter", CharacterEncodingFilter.class);
-//        charEncodingfilterReg.setInitParameter("encoding", "UTF-8");
-//        charEncodingfilterReg.setInitParameter("forceEncoding", "true");
-//        charEncodingfilterReg.addMappingForUrlPatterns(null, false, "/*");
-
         super.onStartup(servletContext);
+        DelegatingFilterProxy filter = new DelegatingFilterProxy("springSecurityFilterChain");
+        filter.setContextAttribute("org.springframework.web.servlet.FrameworkServlet.CONTEXT.dispatcher");
+        servletContext.addFilter("springSecurityFilterChain", filter).addMappingForUrlPatterns(null, false, "/*");
+
 //        //Database Console for managing the app's database
         ServletRegistration.Dynamic h2Servlet = servletContext.addServlet("h2console", WebServlet.class);
         h2Servlet.setLoadOnStartup(2);

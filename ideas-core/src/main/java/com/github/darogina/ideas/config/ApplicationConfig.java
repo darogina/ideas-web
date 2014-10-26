@@ -9,7 +9,7 @@ import org.springframework.hateoas.ResourceAssembler;
 
 @Configuration
 @ComponentScan(basePackageClasses = {Initializer.class})
-@Import({ServiceConfig.class})
+@Import({SecurityConfig.class, MethodSecurityConfig.class, OAuth2ServerConfig.class, ServiceConfig.class})
 public class ApplicationConfig {
 
 }
